@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src --ext .ts",
+    "fix": "eslint --fix src --ext .ts",
     "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
   },
   "keywords": [],
@@ -19,7 +21,10 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "eslint": "^9.33.0",
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "lint": "^0.8.19",
+    "nodemon": "^3.1.10",
+    "typescript-eslint": "^8.40.0"
   }
 }
