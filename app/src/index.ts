@@ -1,18 +1,19 @@
 import express from "express";
 import { Request, Response } from "express"
+import { router as moviesRouter } from "@routes/movies"
+import { router as searchRouter } from "@routes/search"
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON
 app.use(express.json());
+app.use('/api', moviesRouter);
+app.use('/api', searchRouter);
 
-// Simple GET endpoint
 app.get("/status", (req: Request, res: Response) => {
     res.json({ message: "Semantic Search API is runnning!" });
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
