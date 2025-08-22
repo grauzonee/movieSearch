@@ -6,6 +6,7 @@ services:
       - 3000:3000
     environment:
       - REDIS_HOST=redis
+      - REDIS_PASS=semantic
       - REDIS_PORT=6379
       - ELASTIC_HOST=http://elastic:9200
     volumes:
@@ -20,14 +21,14 @@ services:
       - redis
       - elastic
   redis:
-    image: redis/redis-stack:latest
+    image: redis:8.2.1
     container_name: semantic_redis
     command: redis-server /usr/local/etc/redis/redis.conf
     volumes: 
       - redis_data:/data/redis
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
-      - "6379"
+      - 6379:6379
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
       interval: 1s
