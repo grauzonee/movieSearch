@@ -1,4 +1,5 @@
 import express from "express";
+import 'dotenv/config';
 import { Request, Response } from "express"
 import { router as moviesRouter } from "@routes/movies"
 import { router as searchRouter } from "@routes/search"

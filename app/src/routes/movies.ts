@@ -1,11 +1,12 @@
 import { Router, Request, Response } from 'express';
-import { addMovieJob } from '../queue/movieQueue';
+import { addMovieJob } from '@queue/movieQueue';
 
 export const router = Router();
 
 router.post(
     '/movies', async (req: Request, res: Response) => {
-        await addMovieJob({ title: "Test" });
+        const { title, plot, genres } = req.body;
+        await addMovieJob({ title, plot, genres });
         res.status(200).json({ success: true })
     }
 )
