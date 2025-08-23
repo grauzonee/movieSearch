@@ -1,7 +1,16 @@
 import { Router, Request, Response } from 'express';
+import { searchMovie } from '@helper/searchHelper.js';
 
 export const router = Router();
 
 router.get(
-    '/search', (req: Request, res: Response) => { res.status(200).json({ success: true }) }
+    '/search', async (req: Request, res: Response) => {
+        const { q } = req.query;
+        if (typeof (q) === 'string') {
+            const result = await searchMovie(q)
+            res.status(200).json({ success: true, data: result })
+        }
+
+        res.status(421).json({ success: false, message: "Q field is missing" })
+    }
 )
