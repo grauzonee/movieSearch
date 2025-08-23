@@ -1,4 +1,4 @@
-export interface IMovie {
+export interface Movie {
     title: string;
     plot: string;
     genres: string[];
