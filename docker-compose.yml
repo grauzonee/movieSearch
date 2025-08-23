@@ -41,7 +41,7 @@ services:
       retries: 3
 
   elastic: 
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
     container_name: semantic_elastic
     ports: 
       - 9200:9200
@@ -66,10 +66,11 @@ services:
       - "5601:5601"
     environment:
       - ELASTICSEARCH_HOSTS=${ELASTIC_HOST}
-      - ELASTICSEARCH_USERNAME=${ELASTIC_USER}
+      - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
     depends_on:
-      - elastic
+      elastic:
+        condition: service_healthy
 
 
 volumes:

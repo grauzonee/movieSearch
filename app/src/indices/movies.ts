@@ -14,8 +14,8 @@ export async function createMovieIndex() {
                         genres: { type: "keyword" },
                         year: { type: "integer" },
                         plot: { type: "text" },
-                        title_vector: { type: "dense_vector", dims: 1536 }, // for embeddings
-                        plot_vector: { type: "dense_vector", dims: 1536 },
+                        title_vector: { type: "dense_vector", dims: 384 }, // for embeddings
+                        plot_vector: { type: "dense_vector", dims: 384 },
                     },
                 },
             },
