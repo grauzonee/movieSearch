@@ -27,10 +27,14 @@
 
     /* Modules */
     "module": "ESNext",                                /* Specify what module code is generated. */
-    "rootDir": "src",                                  /* Specify the root folder within your source files. */
+    "rootDir": ".",                                  /* Specify the root folder within your source files. */
     "moduleResolution": "NodeNext",                     /* Specify how TypeScript looks up a file from a given module specifier. */
     "paths": {
-        "@routes/*": ["src/routes/*"],
+        "@routes/*": ["routes/*"],
+        "@helper/*": ["helper/*"],
+        "@config/*": ["config/*"],
+        "@models/*": ["models/*"],
+        "@queue/*": ["queue/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     "baseUrl": "./src",
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
