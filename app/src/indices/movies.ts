@@ -20,10 +20,8 @@ export async function createMovieIndex() {
                 },
             },
         });
-        console.log("✅ Movie index created!");
-    } else {
-        console.log("Index already exists");
     }
+    console.log("Movie index prepared!");
 }
 
 createMovieIndex().catch(console.error);

@@ -4,7 +4,7 @@ import { client } from "@config/elastic"
 export async function setIndices() {
     client.ping({}, (error: Error) => {
         if (error) {
-            console.error('Elasticsearch cluster is down!');
+            console.error('Elasticsearch cluster is down!', error.message);
             return;
         } else {
             console.log('Elasticsearch is running.');
