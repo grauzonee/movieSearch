@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express';
 import multer from "multer"
-import csv from "csv-parser";
 import { addMovieJob } from '@queue/movieQueue';
 import { addFileJob } from '@queue/fileQueue';
 
