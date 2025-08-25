@@ -51,7 +51,7 @@ services:
       - xpack.security.enabled=${ELASTIC_SECURITY}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     volumes:
-      - elastic_data:/data/elastic
+      - elastic_data:/usr/share/elasticsearch/data 
     healthcheck:
       test: ["CMD", "curl", "-u", "elastic:${ELASTIC_PASSWORD}", "-fs", "http://localhost:9200/"]
       interval: 10s
