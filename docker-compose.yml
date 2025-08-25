@@ -66,8 +66,7 @@ services:
       - "5601:5601"
     environment:
       - ELASTICSEARCH_HOSTS=${ELASTIC_HOST}
-      - ELASTICSEARCH_USERNAME=kibana_system
-      - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=${ELASTIC_KEY}
     depends_on:
       elastic:
         condition: service_healthy

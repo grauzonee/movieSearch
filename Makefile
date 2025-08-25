@@ -10,9 +10,13 @@ o_server:
 	docker exec -it semantic_app sh
 o_elastic:
 	docker exec -it semantic_elastic sh
+o_kibana:
+	docker exec -it semantic_kibana sh
 log_redis:
 	docker logs semantic_redis
 log_server:
 	docker logs semantic_app
 log_elastic:
 	docker logs semantic_elastic
+log_kibana:
+	docker logs semantic_kibana
