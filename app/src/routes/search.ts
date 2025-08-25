@@ -9,8 +9,8 @@ router.get(
         if (typeof (q) === 'string') {
             const result = await searchMovie(q)
             res.status(200).json({ success: true, data: result })
+        } else {
+            res.status(400).json({ success: false, message: "Q field is missing" })
         }
-
-        res.status(421).json({ success: false, message: "Q field is missing" })
     }
 )
