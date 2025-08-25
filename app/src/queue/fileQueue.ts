@@ -10,9 +10,10 @@ export const fileQueue = new Queue(queueName, { connection })
 
 new Worker<string, Record<string, string>>(queueName, async (job: Job) => {
     const movies = await extractMoviesFromCsv(job.data)
+    const total = movies.length;
     await job.updateProgress(movies);
-    movies.forEach(async (movie: Movie) => {
-        await addMovieJob(movie)
+    movies.forEach(async (movie: Movie, index: number) => {
+        await addMovieJob(movie, index + 1, total);
     })
     return { status: 'ok' }
 }, { connection })

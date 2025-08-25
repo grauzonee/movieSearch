@@ -17,7 +17,7 @@ router.post(
             return;
         }
         const { title, plot, genres } = req.body;
-        await addMovieJob({ title, plot, genres });
+        await addMovieJob({ title, plot, genres }, 1, 1);
         res.status(200).json({ success: true })
     }
 )
