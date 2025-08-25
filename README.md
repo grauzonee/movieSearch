@@ -1,4 +1,4 @@
-# fileSearch
+# movieSearch
 
 A background file ingestion and semantic search service. Upload a CSV of movies (title, plot, genres), process it asynchronously with Redis + BullMQ, embed text with `@xenova/transformers`, index into Elasticsearch, and expose an HTTP API for searching by keyword + vector similarity.
 
