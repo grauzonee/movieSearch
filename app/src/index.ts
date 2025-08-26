@@ -3,10 +3,12 @@ import { Request, Response } from "express"
 import { router as moviesRouter } from "@routes/movies"
 import { router as searchRouter } from "@routes/search"
 import { setIndices } from "@indices/setIndices";
+import cors from 'cors'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors())
 app.use(express.json());
 app.use('/api', moviesRouter);
 app.use('/api', searchRouter);

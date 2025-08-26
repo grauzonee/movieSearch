@@ -7,7 +7,7 @@ export async function searchMovie(q: string): Promise<Movie> {
     const queryVector = Array.from(embeddings)
     const result = await client.search({
         index: 'movies',
-        _source: ['title', 'plot', 'genres'],
+        _source: ['title', 'plot', 'genres', 'year'],
         body: {
             size: 5,
             knn: {

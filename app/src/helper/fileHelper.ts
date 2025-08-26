@@ -14,7 +14,8 @@ export async function extractMoviesFromCsv(filePath: string): Promise<Movie[]> {
                 result.push({
                     title: data.title,
                     plot: data.plot,
-                    genres: data.genres.split(',')
+                    genres: data.genres.split(','),
+                    year: data.year
                 });
             })
             .on("end", () => {
