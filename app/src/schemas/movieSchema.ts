@@ -10,5 +10,6 @@ const toTitleCase = (str: string) =>
 export const movieSchema: Joi.Schema = Joi.object().keys({
     title: Joi.string().required().custom((value) => toTitleCase(value.trim())),
     plot: Joi.string().trim().required(),
-    genres: Joi.array().items(Joi.string()).unique().required().custom((values: string[]) => values.map((value: string) => value.trim().toLowerCase()))
+    genres: Joi.array().items(Joi.string()).unique().required().custom((values: string[]) => values.map((value: string) => value.trim().toLowerCase())),
+    year: Joi.number().required()
 })

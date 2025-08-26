@@ -3,8 +3,16 @@ import { connection } from "@config/redis"
 import { Movie } from "@models/Movie"
 import { embedText } from "@helper/embedder"
 import { client } from "@config/elastic"
+import crypto from "crypto"
 
 const queueName = 'movieQueue'
+
+function generateMovieId(title: string, year: number): string {
+    return crypto
+        .createHash("md5")
+        .update(title.trim().toLowerCase() + year)
+        .digest("hex")
+}
 
 export const movieQueue = new Queue(queueName, { connection })
 
@@ -19,6 +27,7 @@ export const worker = new Worker<Movie & { index: number, total: number }, Recor
     try {
         await client.index({
             index: 'movies',
+            id: generateMovieId(job.data.title, job.data.year),
             body: postToInsert
         })
         await client.indices.refresh({ index: 'movies' })
