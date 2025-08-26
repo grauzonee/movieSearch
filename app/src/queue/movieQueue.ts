@@ -19,7 +19,7 @@ export const movieQueue = new Queue(queueName, { connection })
 export const worker = new Worker<Movie & { index: number, total: number }, Record<string, string>>(queueName, async (job: Job) => {
     const title_vector = await embedText(job.data.title)
     const plot_vector = await embedText(job.data.plot)
-    const postToInsert = {
+    const movieToInsert = {
         ...job.data,
         title_vector,
         plot_vector
@@ -28,7 +28,7 @@ export const worker = new Worker<Movie & { index: number, total: number }, Recor
         await client.index({
             index: 'movies',
             id: generateMovieId(job.data.title, job.data.year),
-            body: postToInsert
+            body: movieToInsert
         })
         await client.indices.refresh({ index: 'movies' })
         console.log(`Movie ${job.data.index}/${job.data.total} processed: "${job.data.title}"`);

@@ -16,9 +16,8 @@ router.post(
             res.status(400).json({ success: false, message })
             return;
         }
-        const { title, plot, genres } = value;
-        console.log("title", title, plot, genres)
-        await addMovieJob({ title, plot, genres }, 1, 1);
+        const { title, plot, genres, year } = value;
+        await addMovieJob({ title, plot, genres, year }, 1, 1);
         res.status(200).json({ success: true })
     }
 )
