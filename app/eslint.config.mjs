@@ -10,7 +10,7 @@ export default tseslint.config(
     tseslint.configs.strict,
     {
         rules: {
-            'no-console': 'warn' // or 'error' if you want to block console usage
+            'no-console': 'warn'
         }
     }
 );
