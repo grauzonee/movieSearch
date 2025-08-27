@@ -4,6 +4,7 @@ import { router as moviesRouter } from "@routes/movies"
 import { router as searchRouter } from "@routes/search"
 import { setIndices } from "@indices/setIndices";
 import cors from 'cors'
+import { logger } from "@helper/logger.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,6 @@ app.get("/status", (req: Request, res: Response) => {
 await setIndices()
 
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    logger.info(`Server running at http://localhost:${PORT}`);
 });
 
