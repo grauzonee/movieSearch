@@ -4,7 +4,7 @@ import DailyRotateFile from 'winston-daily-rotate-file';
 const transportDebug = new DailyRotateFile({
     level: 'debug',
     filename: 'logs/debug-%DATE%.log',
-    datePattern: 'YYYY-MM-DD-HH',
+    datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
     maxFiles: '14d'
@@ -13,7 +13,7 @@ const transportDebug = new DailyRotateFile({
 const transportInfo = new DailyRotateFile({
     level: 'info',
     filename: 'logs/system-%DATE%.log',
-    datePattern: 'YYYY-MM-DD-HH',
+    datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
     maxFiles: '14d'
@@ -22,7 +22,7 @@ const transportInfo = new DailyRotateFile({
 const transportError = new DailyRotateFile({
     level: 'error',
     filename: 'logs/error-%DATE%.log',
-    datePattern: 'YYYY-MM-DD-HH',
+    datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
     maxFiles: '14d'
@@ -43,6 +43,3 @@ if (process.env.NODE_ENV !== 'production') {
         format: format.simple()
     }))
 }
-
-logger.info("Info log!")
-logger.error("Error log!")
