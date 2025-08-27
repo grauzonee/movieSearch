@@ -7,5 +7,10 @@ export default tseslint.config(
     eslint.configs.recommended,
     tseslint.configs.recommended,
     tseslint.configs.stylistic,
-    tseslint.configs.strict
+    tseslint.configs.strict,
+    {
+        rules: {
+            'no-console': 'warn' // or 'error' if you want to block console usage
+        }
+    }
 );

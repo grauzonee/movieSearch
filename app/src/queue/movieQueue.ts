@@ -4,6 +4,7 @@ import { Movie } from "@models/Movie"
 import { embedText } from "@helper/embedder"
 import { client } from "@config/elastic"
 import crypto from "crypto"
+import { logger } from "@helper/logger.js"
 
 const queueName = 'movieQueue'
 
@@ -31,9 +32,9 @@ export const worker = new Worker<Movie & { index: number, total: number }, Recor
             body: movieToInsert
         })
         await client.indices.refresh({ index: 'movies' })
-        console.log(`Movie ${job.data.index}/${job.data.total} processed: "${job.data.title}"`);
+        logger.info(`Movie ${job.data.index}/${job.data.total} processed: "${job.data.title}"`);
     } catch (error) {
-        console.log("Error inserting movie to ES", error);
+        logger.error("Error inserting movie to ES", error);
     }
     return { status: 'ok' };
 }, { connection })

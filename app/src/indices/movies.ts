@@ -1,9 +1,11 @@
 import { client } from "@config/elastic"
+import { logger } from "@helper/logger.js";
 
 export async function createMovieIndex() {
     const indexExists = await client.indices.exists({ index: "movies" });
 
     if (!indexExists) {
+
         await client.indices.create({
             index: "movies",
             body: {
@@ -20,8 +22,9 @@ export async function createMovieIndex() {
                 },
             },
         });
+        logger.debug("Movie index was created");
+    } else {
+        logger.debug("Movie index was already present, nothing to do...");
     }
-    console.log("Movie index prepared!");
-}
 
-createMovieIndex().catch(console.error);
+}
