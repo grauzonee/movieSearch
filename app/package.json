@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --ext .ts",
     "fix": "eslint --fix src --ext .ts",
-    "dev": "npx tsx watch src/index.ts"
+    "dev": "npx tsx watch src/index.ts",
+    "compile": "npx tsx src/index.ts"
   },
   "keywords": [],
   "author": "",
